@@ -15,7 +15,7 @@ on a node-edge graph stored in GraphML format.
 
 ####Getting Started####
 
-You might want to begin by seeing what results this program can produce. A graph of the London Underground network 
+You might want to begin by seeing what [results](https://raw.github.com/jaron/railgraph/master/graphs/tubeDLR.png) this program can produce. A graph of the London Underground network 
 has been created, which you can load into a graph exploration tool like [Gephi](http://gephi.org).
 
 You can download the graph as a [Gephi project](https://github.com/jaron/railgraph/blob/master/graphs/tubeDLR.gephi?raw=true) or a [GraphML file](https://raw.github.com/jaron/railgraph/master/graphs/tubeDLR.graphml)
@@ -40,4 +40,4 @@ Step by step intructions on running the code will be coming soon.
 
 This is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
-The graph data files are made available under a [Creative Commons Attribution-ShareAlike license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US), you are free to use and modify it for any purposes, as long as attribution as preserved and any derivative works are also unrestricted.
+The graph data files and images are made available under a [Creative Commons Attribution-ShareAlike license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US), you are free to use and modify them for any purposes, as long as attribution as preserved and any derivative works are also unrestricted.
