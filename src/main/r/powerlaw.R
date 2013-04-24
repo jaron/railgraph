@@ -288,6 +288,8 @@ plfit<-function(x=rpareto(1000,10,2.5),method="limit",value=c(),finite=FALSE,now
 # load the igraph library
 library(igraph)
 
+set.seed(123456)
+
 setwd("/users/jaron/Documents/workspace/railgraph/graphs")
 
 fileName = "tubeDLR.graphml"
@@ -317,6 +319,7 @@ degrees = degree(g,mode="all")
 a = plfit(degrees)
 
 # examine the details
+sprintf("Average degree of Tube graph is %f", mean(degrees))
 sprintf("xmin (degree where fit starts) = %d", a$xmin)
 sprintf("alpha (power-law exponent) = %g", a$alpha)
 sprintf("D (distribution value) = %f", a$D)
@@ -342,13 +345,16 @@ points(a$xmin:max(x),fittedvals,type='l',col='red')
 ba <- barabasi.game(309, directed=F)
 plot(ba, layout=layout.kamada.kawai, vertex.size=3, vertex.label=NA, frame=TRUE)
 degrees = degree(ba, mode="all")
+sprintf("Average degree of BA graph is %f", mean(degrees))
 a = plfit(degrees)
 print(a)
 
-# now try creating an Erdos-Renyi graph for comparison
-erdos <- erdos.renyi.game(309, 0.008, type="gnp")
-plot(erdos, layout=layout.kamada.kawai, vertex.size=3, vertex.label=NA, frame=TRUE)
-degrees = degree(erdos, mode="all")
+# now try creating an Erdos-Renyi graph for comparison (then remove unconnected nodes)
+erdos <- erdos.renyi.game(330, 0.008, type="gnp")
+erdos2 <- delete.vertices(erdos, which(degree(erdos) < 1))
+plot(erdos2, layout=layout.kamada.kawai, vertex.size=3, vertex.label=NA, frame=TRUE)
+degrees = degree(erdos2, mode="all")
+sprintf("Average degree of ER graph is %f", mean(degrees))
 a = plfit(degrees)
 print(a)
 

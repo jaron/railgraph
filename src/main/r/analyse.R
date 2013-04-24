@@ -1,5 +1,7 @@
 library(igraph)
 
+set.seed(123456)
+
 # change this to your working directory (or where you want the graphs downloaded)
 setwd("/users/jaron/Documents/workspace/railgraph/graphs")
 
@@ -51,20 +53,22 @@ lvcent <- function(graph){
 }
 lv = lvcent(g)
 
+# for reference, this calculates the PageRank of stations but there's no obvious correlation here
+# after all, connections between stations are driven by geography and cost of building lines, however desirable superhub stations might be
+pr = page.rank(g)
+V(g)$label[which.max(pr$vector)]
+V(g)$label[V(g)[nei(which.max(pr$vector))]]
+
 # merge data values into a single data frame
 df <- data.frame(V(g)$label, bb, degreeVal, lv)
 col.names=c("Station", "Betweenness", "Degree", "Leverage")
 names(df) <- col.names
 
+options(digits=2)
 df[ order(-df[,2], df[,1]), ]
 
 
-# calculate Page Rank (page.rank()) and find the node having the highest pagerank
-# you'll want the $vector portion of the answer returned
 
-pr = page.rank(g)
-V(g)$label[which.max(pr$vector)]
-V(g)$label[V(g)[nei(which.max(pr$vector))]]
 
 
 
