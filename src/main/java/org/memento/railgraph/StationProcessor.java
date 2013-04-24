@@ -405,18 +405,18 @@ public class StationProcessor
 			Node thisStation = findStationNode(c.station);
 			Node precedingStation = findStationNode(c.preceding);
 			if (thisStation == null) {
-				System.out.println(" MISSING: " + c.station + " in entry " + c.toString());
+				System.out.println(i + " MISSING: " + c.station + " in entry " + c.toString());
 				continue;
 			}
 			if (precedingStation == null) {
-				System.out.println(" MISSING: " + c.preceding + " in entry " + c.toString());
+				System.out.println(i + " MISSING: " + c.preceding + " in entry " + c.toString());
 				continue;
 			}
 			connectStations(thisStation, precedingStation, c.line);
 
 			Node nextStation = findStationNode(c.next);
 			if (nextStation == null) {
-				System.out.println(" MISSING: " + c.next + " in entry " + c.toString());
+				System.out.println(i + " MISSING: " + c.next + " in entry " + c.toString());
 				continue;
 			}
 			connectStations(thisStation, nextStation, c.line);
