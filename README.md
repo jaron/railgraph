@@ -16,25 +16,40 @@ on a node-edge graph stored in GraphML format.
 ####Getting Started####
 
 You might want to begin by seeing what [results](https://raw.github.com/jaron/railgraph/master/graphs/tubeDLR.png) this program can produce. A graph of the London Underground network 
-has been created, which you can load into a graph exploration tool like [Gephi](http://gephi.org).
+has been created, which you can load into a graph exploration tool like [Gephi](http://gephi.org), you can download it either as a 
+[Gephi project](https://github.com/jaron/railgraph/blob/master/graphs/tubeDLR.gephi?raw=true) or a [GraphML file](https://raw.github.com/jaron/railgraph/master/graphs/tubeDLR.graphml)
 
-You can download the graph as a [Gephi project](https://github.com/jaron/railgraph/blob/master/graphs/tubeDLR.gephi?raw=true) or a [GraphML file](https://raw.github.com/jaron/railgraph/master/graphs/tubeDLR.graphml)
-
+.
 
 ####Creating your own graphs####
 
-To create a graph from Wikipedia you'll need the following:
+The code that creates graphs from Wikipedia is written in Java, and has a Maven build configuration. It uses an 
+embedded [Neo4j](http://neo4j.org) graph database, so you shouldn't need to install it separately, (although if you're interested in working with graphs, I'd recommend it).
 
-* Java (and Maven to build)
-* [Neo4j](http://neo4j.org) - a graph database
+Once you've downloaded the code, edit the file App.java and change the path to where you want your Neo4j data files to be stored. You can point this to an existing Neo4j database if you like.
 
-To run the analysis code you'll need:
+Next build it, a few tests have been included to check it's working as expected. The build command is simply:
 
-* R - I recommend [RStudio](http://rstudio.org)
-* install the iGraph and VGAM R packages
+> mvn 
 
-Step by step intructions on running the code will be coming soon.
+Now, you can run it:
 
+> java -cp target/railgraph-1.0-jar-with-dependencies.jar org.memento.railgraph.App
+
+The first time you run it, it might take a minute, as the application will download the Wikipedia pages for all the stations into the data directory.
+When you run it subsequently, it will use the local copies. After fetching the data it will extract information on stations and their connections and store them as nodes and edges 
+in the Neo4j database. At the end of the run it will display an omissions list: these are connections that have been found where one of the stations doesn't have a corresponding node. 
+Typically these will be national rail stations, and represent the boundary of the area the graph covers.
+
+.
+
+####Analysing your graphs#####
+
+The analysis code is written in R, and can be found in the src/main/r directory. If you haven't got it already, I'd recommend installing [RStudio](http://rstudio.org).
+Before running the code, install the igraph and VGAM packages from the R repository. 
+Then simply edit the R code to change the working directory (look for the line setwd), and run it. 
+
+.
 
 - - -
 
