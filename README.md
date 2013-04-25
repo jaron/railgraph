@@ -41,6 +41,11 @@ When you run it subsequently, it will use the local copies. After fetching the d
 in the Neo4j database. At the end of the run it will display an omissions list: these are connections that have been found where one of the stations doesn't have a corresponding node. 
 Typically these will be national rail stations, and represent the boundary of the area the graph covers.
 
+Your rail network is now in your Neo4j database, if you have the web interface install, you can explore it. An even better way is to install [Gephi](http://gephi.org) 
+and the [Neo4j plugin](https://marketplace.gephi.org/plugin/neo4j-graph-database-support/) and import your graph. You can then export it in whatver graph format you choose, I recommend
+GraphML for its compatibility with igraph. Bear in mind that Neo4j stores data as directed graphs, so when you export it, specify it is undirected, and it remove the duplicate reciprocal edges.
+There seems to be a bug in the Neo4j import process, so once you export to GraphML I recommend closing and restarting Gephi, and loading your newly created GraphML file.  
+
 .
 
 ####Analysing your graphs#####
