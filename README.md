@@ -43,11 +43,11 @@ Typically these will be national rail stations, and represent the boundary of th
 
 Your rail network is now in your Neo4j database, if you have the web interface install, you can explore it. An even better way is to install [Gephi](http://gephi.org) 
 and the [Neo4j plugin](https://marketplace.gephi.org/plugin/neo4j-graph-database-support/) and import your graph. You can then export it in whatver graph format you choose, I recommend
-GraphML for its compatibility with igraph. Bear in mind that Neo4j stores data as directed graphs, so when you export it, specify it is undirected, and it remove the duplicate reciprocal edges.
-There seems to be a bug in the Neo4j import process, so once you export to GraphML I recommend closing and restarting Gephi, and reloading your newly created GraphML file.  
+GraphML for its compatibility with igraph. Bear in mind that Neo4j stores data as directed graphs, so when you export it, specify it as undirected, and the duplicate reciprocal edges will be omitted.
+Note: there seems to be a bug in the Neo4j import process, so once you export to GraphML I recommend closing and restarting Gephi, and reloading your newly created GraphML file.  
 
-When you view a newly created graph, it might look rather unrecognisable. To position the stations according to their true geographically location, you should install the 
-[GeoLayout plugin](https://marketplace.gephi.org/plugin/geolayout/). The import process treats all data as Strings, but the GeoLayout expects numeric values. To address this, 
+When you view your newly created graph, it might look rather jumbled. To position the stations according to their true geographically location, simply install the 
+[GeoLayout plugin](https://marketplace.gephi.org/plugin/geolayout/). The gotcha is Neo4j import process treats all data as Strings, but the GeoLayout expects numeric values. To address this, 
 duplicate the latitude and longitude columns in the Data Laboratory panel so they're of type Double, then choose the 'Geo Layout' option in the main graph view, setting the 
 latitude and longitude options to the 2 new columns you've just created. The nodes should now appear with their proper orientation. You can then choose another 
 layout, like Force Atlas, to push the nodes apart and make the graph easier to read.
@@ -60,10 +60,12 @@ The analysis code is written in R, and can be found in the src/main/r directory.
 Before running the code, install the igraph and VGAM packages from the R repository. 
 Then simply edit the R code to change the working directory (look for the line setwd), and run it. 
 
+Do get in touch (contactme @ jaroncollis . com) if you've any questions.
+
 .
 
 - - -
 
 This is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl.html).
 
-The graph data files and images are made available under a [Creative Commons Attribution-ShareAlike license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US), you are free to use and modify them for any purposes, as long as attribution as preserved and any derivative works are also unrestricted.
+The graph data files and images are made available under a [Creative Commons Attribution-ShareAlike license](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US), you are free to use and modify them for any purpose, as long as attribution is preserved and any derivative works are also unrestricted.
