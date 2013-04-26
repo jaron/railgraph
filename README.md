@@ -60,6 +60,10 @@ The analysis code is written in R, and can be found in the src/main/r directory.
 Before running the code, install the igraph and VGAM packages from the R repository. 
 Then simply edit the R code to change the working directory (look for the line setwd), and run it. 
 
+If social network analysis is new to you, the results are discussed in [this document](https://dl.dropboxusercontent.com/u/10449719/AnalysisOfTheLondonUnderground.pdf).
+
+And there's links to some research papers relating to the study of transport networks on the [project wiki](https://github.com/jaron/railgraph/wiki).
+
 Do get in touch (contactme @ jaroncollis . com) if you've any questions.
 
 .
